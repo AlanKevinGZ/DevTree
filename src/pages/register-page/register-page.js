@@ -112,7 +112,6 @@ export class RegisterPage extends LitElement {
       </div>
     `;
   }
-  
 }
 
 customElements.define('register-page', RegisterPage);
