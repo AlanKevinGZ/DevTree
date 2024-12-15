@@ -1,5 +1,6 @@
 import { LitElement, html } from 'lit';
 import { Router } from '@vaadin/router';
+import { AppLayout } from './pages/auth-layout.js/auth-layout.js';
 
 export class AppMain extends LitElement {
   firstUpdated() {
@@ -21,6 +22,26 @@ export class AppMain extends LitElement {
         },
         component: 'register-page',
       },
+      {
+        path: '/admin',
+        component: 'app-layout', 
+        children: [
+          {
+            path: '/',
+            action: async () => {
+              await import('../src/pages/linktree-page/linktree-page.js');
+            },
+            component: 'linktree-page', 
+          },
+          {
+            path: '/perfil',
+            action: async () => {
+              await import('../src/pages/profile-page/profile-page.js');
+            },
+            component: 'profile-page', 
+          },
+        ],
+      }
     ]);
   }
 
